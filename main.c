@@ -6,6 +6,7 @@
 #include "stm_lib/inc/stm32f10x_i2c.h"
 #include "stm_lib/inc/stm32f10x_rcc.h"
 #include "stm_lib/inc/stm32f10x_tim.h"
+#include "stm_lib/inc/stm32f10x_nvic.h"
 //----------------------------------------------------------
 
 
@@ -36,9 +37,25 @@ int main(void)
 	TIM_TimeBaseInit(TIM2, &timer);
 	TIM_Cmd(TIM2, ENABLE);
 
+	//konfigurowanie przerwania timera
+	NVIC_InitTypeDef nvicStructure;
+	    nvicStructure.NVIC_IRQChannel = TIM2_IRQn;
+	    nvicStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	    nvicStructure.NVIC_IRQChannelSubPriority = 1;
+	    nvicStructure.NVIC_IRQChannelCmd = ENABLE;
+	    NVIC_Init(&nvicStructure);
+
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+	NVIC_EnableIRQ(TIM2_IRQn);
+
     while(1)
     {
-    	if (TIM_GetCounter(TIM2) > 65530)
-    		GPIO_WriteBit(GPIOC, Led_Ready.GPIO_Pin, Bit_RESET);
+    	/*if (TIM_GetCounter(TIM2) > 65530)
+    		GPIO_WriteBit(GPIOC, Led_Ready.GPIO_Pin, Bit_RESET);*/
     }
+}
+
+void TIM2_IRQHandler(void)
+{
+	GPIO_WriteBit(GPIOC, GPIO_Pin_All, Bit_SET);
 }
