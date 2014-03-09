@@ -1,34 +1,16 @@
 //automatycznie wygenerowany przez CoIDE, ja tylko includujê
-#include "cmsis_boot/stm32f10x.h"
-#include "cmsis/core_cm3.h"
-#include "cmsis_boot/system_stm32f10x.h"
-#include "stm_lib/inc/stm32f10x_gpio.h"
-#include "stm_lib/inc/stm32f10x_i2c.h"
-#include "stm_lib/inc/stm32f10x_rcc.h"
-#include "stm_lib/inc/stm32f10x_tim.h"
-#include "stm_lib/inc/stm32f10x_nvic.h"
+#include "naglowki_include.h"
 //----------------------------------------------------------
-
+#include "inicjalizacja.h"
+#include "LED.h"
 
 int main(void)
 {
-	//zainicjalizownaie zegara
-	SystemInit();
+	inicjalizacja_zegara();
+	inicjalizacja_zasilania();
+	inicjalizacja_LED();
 
-	//w³¹czenie zasilania na linii APB2
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-	//APB1 dla TIM2
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-	//struktura LED
-	GPIO_InitTypeDef Led_Ready;
-	Led_Ready.GPIO_Pin = GPIO_Pin_All;
-	Led_Ready.GPIO_Mode = GPIO_Mode_Out_PP;
-	Led_Ready.GPIO_Speed = GPIO_Speed_2MHz;
-
-	//inicjalizacja LED i ustawienie bitu
-	GPIO_Init(GPIOC, &Led_Ready);
-	GPIO_WriteBit(GPIOC, Led_Ready.GPIO_Pin, Bit_SET);
+	GPIO_WriteBit(GPIOC, LED_READY_PIN, Bit_SET);
 
 	TIM_TimeBaseInitTypeDef timer;
 	timer.TIM_CounterMode = TIM_CounterMode_Up;
