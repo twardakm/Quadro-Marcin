@@ -9,57 +9,14 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor id="org.coocox.welcome.ui.WelcomePage" name="" partName="welcome" title="welcome" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
-<org.coocox.welcome.ui.WelcomePage/>
-</input>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/main.c" title="main.c" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="332" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm3.h" partName="core_cm3.h" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis/core_cm3.h" title="core_cm3.h" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis/core_cm3.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/cmsis/core_cm3.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1740"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" partName="stm32f10x_gpio.h" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/stm_lib/inc/stm32f10x_gpio.h" title="stm32f10x_gpio.h" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/stm_lib/inc/stm32f10x_gpio.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/stm_lib/inc/stm32f10x_gpio.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1050" selectionTopPixel="5972"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.c" partName="stm32f10x_gpio.c" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/stm_lib/src/stm32f10x_gpio.c" title="stm32f10x_gpio.c" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/stm_lib/src/stm32f10x_gpio.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/stm_lib/src/stm32f10x_gpio.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5040" selectionTopPixel="2639"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" partName="startup_stm32f10x_md.c" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/startup/startup_stm32f10x_md.c" title="startup_stm32f10x_md.c" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/startup/startup_stm32f10x_md.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1007" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" partName="system_stm32f10x.c" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/system_stm32f10x.c" title="system_stm32f10x.c" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/system_stm32f10x.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/cmsis_boot/system_stm32f10x.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6521" selectionTopPixel="3540"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" partName="system_stm32f10x.h" path="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/system_stm32f10x.h" title="system_stm32f10x.h" tooltip="C:/Documents and Settings/Marcin Twardak/Moje dokumenty/Ubuntu One/Quadrocopter/QuadroTwins-master/uC/Quadro-Marcin/cmsis_boot/system_stm32f10x.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/cmsis_boot/system_stm32f10x.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="540"/>
-</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="11" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="3">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/quadro"/>
 <element path="/quadro/cmsis"/>
@@ -70,17 +27,21 @@
 <element path="/quadro/stm_lib/src"/>
 </expanded>
 <selection>
-<element path="/quadro/cmsis_boot/system_stm32f10x.h"/>
+<element path="/quadro"/>
 </selection>
 </viewState>
 </view>
 <view id="org.coocox.component.ui.ComponentView" partName="Components">
 <viewState/>
 </view>
-<view id="org.coocox.builder.ui.exampleView" partName="GPIO Examples">
-<viewState>
-<Examples ComponentId="444" Title="GPIO"/>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState isPinned="false">
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+<view IMemento.internal.id="org.eclipse.search.text.FileSearchResultPage" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" org.eclipse.search.resultpage.limit="1000" org.eclipse.search.resultpage.sorting="2"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
@@ -89,7 +50,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.coocox.builder.ui.exampleView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.coocox.builder.ui.views.ProjectView" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
@@ -102,28 +63,29 @@
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.coocox.userspace.actionSet"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showConsoleAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showDebugAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryAction"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.ShowDisassemblyAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showExpressionsAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showDebugAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showConsoleAction"/>
 <hide_menu_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <view id="org.coocox.component.ui.ComponentView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
 <view id="org.coocox.component.ui.Help"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.coocox.builder.ui.exampleView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -141,17 +103,24 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.console.ConsoleView" ratio="0.6986755" ratioLeft="422" ratioRight="182" relationship="4" relative="org.eclipse.ui.internal.ViewStack@19c4364"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@ce581b" ratio="0.21924603" ratioLeft="221" ratioRight="787" relationship="2" relative="org.eclipse.ui.internal.ViewStack@19c4364">
-<folder activePageID="org.coocox.builder.ui.exampleView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.exampleView" label="GPIO Examples"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@2959f4" ratio="0.6986755" ratioLeft="422" ratioRight="182" relationship="4" relative="org.eclipse.ui.internal.ViewStack@19c4364">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@ce581b" ratio="0.21924603" ratioLeft="221" ratioRight="787" relationship="2" relative="org.eclipse.ui.internal.ViewStack@19c4364">
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.exampleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@8c0d58" ratio="0.70645446" ratioLeft="799" ratioRight="332" relationship="2" relative="org.eclipse.ui.internal.ViewStack@ce581b">
-<folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.coocox.component.ui.Help" label="Help"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -177,100 +146,52 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" uri="file:/C:/Documents%20and%20Settings/Marcin%20Twardak/Moje%20dokumenty/Ubuntu%20One/Quadrocopter/QuadroTwins-master/uC/Quadro/Quadro.cogui"/>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/cmsis/core_cm3.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/stm_lib/inc/stm32f10x_gpio.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/stm_lib/src/stm32f10x_gpio.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/cmsis_boot/system_stm32f10x.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/cmsis_boot/system_stm32f10x.h"/>
-</editors>
-<item historyLabel="welcome" index="0"/>
-<item historyLabel="Quadro.cogui" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="welcome" index="0"/>
-<item historyLabel="Repository" index="2"/>
-<item historyLabel="welcome" index="0"/>
-<item historyLabel="Repository" index="2"/>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="365" y="0"/>
-</item>
-<item historyLabel="Repository" index="2"/>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="365" y="0"/>
-</item>
-<item historyLabel="core_cm3.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="365" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="309" y="0"/>
-</item>
-<item historyLabel="stm32f10x_gpio.h" index="5">
-<position info="not_deleted" x="1050" y="0"/>
-</item>
-<item historyLabel="stm32f10x_gpio.c" index="6">
-<position info="not_deleted" x="5040" y="0"/>
-</item>
-<item historyLabel="startup_stm32f10x_md.c" index="7">
-<position info="not_deleted" x="1007" y="0"/>
-</item>
-<item historyLabel="main.c" index="3">
-<position info="not_deleted" x="332" y="0"/>
-</item>
-<item historyLabel="system_stm32f10x.c" index="8">
-<position info="not_deleted" x="6521" y="0"/>
-</item>
-<item active="true" historyLabel="system_stm32f10x.h" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" tooltip="quadro/cmsis_boot/system_stm32f10x.h">
-<persistable path="/quadro/cmsis_boot/system_stm32f10x.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="quadro/cmsis_boot/system_stm32f10x.c">
-<persistable path="/quadro/cmsis_boot/system_stm32f10x.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="quadro/cmsis_boot/startup/startup_stm32f10x_md.c">
-<persistable path="/quadro/cmsis_boot/startup/startup_stm32f10x_md.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.c" tooltip="quadro/stm_lib/src/stm32f10x_gpio.c">
-<persistable path="/quadro/stm_lib/src/stm32f10x_gpio.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" tooltip="quadro/stm_lib/inc/stm32f10x_gpio.h">
-<persistable path="/quadro/stm_lib/inc/stm32f10x_gpio.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="quadro/main.c">
+<persistable path="/quadro/main.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm3.h" tooltip="quadro/cmsis/core_cm3.h">
 <persistable path="/quadro/cmsis/core_cm3.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="quadro/main.c">
-<persistable path="/quadro/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" tooltip="quadro/cmsis_boot/stm32f10x.h">
+<persistable path="/quadro/cmsis_boot/stm32f10x.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.h" tooltip="quadro/stm_lib/inc/stm32f10x_gpio.h">
+<persistable path="/quadro/stm_lib/inc/stm32f10x_gpio.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_gpio.c" tooltip="quadro/stm_lib/src/stm32f10x_gpio.c">
+<persistable path="/quadro/stm_lib/src/stm32f10x_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="quadro/cmsis_boot/system_stm32f10x.c">
+<persistable path="/quadro/cmsis_boot/system_stm32f10x.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="IRQ_Table.h" tooltip="quadro/IRQ_Table.h">
+<persistable path="/quadro/IRQ_Table.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" tooltip="quadro/cmsis_boot/system_stm32f10x.h">
+<persistable path="/quadro/cmsis_boot/system_stm32f10x.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="quadro/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/quadro/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 </file>
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>
-<subPage/>
+<persistable>&#x0A;<subPage/>
 </persistable>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Quadro.cogui" tooltip="C:\Documents and Settings\Marcin Twardak\Moje dokumenty\Ubuntu One\Quadrocopter\QuadroTwins-master\uC\Quadro\Quadro.cogui">
 <persistable uri="file:/C:/Documents%20and%20Settings/Marcin%20Twardak/Moje%20dokumenty/Ubuntu%20One/Quadrocopter/QuadroTwins-master/uC/Quadro/Quadro.cogui"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.h" tooltip="quadro/cmsis_boot/system_stm32f10x.h">
+<persistable path="/quadro/cmsis_boot/system_stm32f10x.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f10x_md.c" tooltip="quadro/cmsis_boot/startup/startup_stm32f10x_md.c">
+<persistable path="/quadro/cmsis_boot/startup/startup_stm32f10x_md.c"/>
 </file>
 </mruList>
 </workbench>
