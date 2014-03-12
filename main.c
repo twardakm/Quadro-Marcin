@@ -4,6 +4,7 @@
 #include "inicjalizacja.h"
 #include "LED.h"
 #include "USART.h"
+#include "NVIC.h"
 
 int main(void)
 {
@@ -11,6 +12,7 @@ int main(void)
 	inicjalizacja_zasilania();
 	inicjalizacja_LED();
 	inicjalizacja_USART();
+	inicjalizacja_NVIC();
 
     while(1)
     {

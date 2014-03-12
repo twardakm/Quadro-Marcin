@@ -23,12 +23,6 @@ void inicjalizacja_TIM2(void)
 	timer->TIM_ClockDivision = 0;
 
 	//konfigurowanie przerwania timera
-	NVIC_InitTypeDef *nvic_timer = malloc(sizeof(NVIC_InitTypeDef));
-	nvic_timer->NVIC_IRQChannel = TIM2_IRQn; //timer2
-	nvic_timer->NVIC_IRQChannelPreemptionPriority = 0;
-	nvic_timer->NVIC_IRQChannelSubPriority = 1;
-	nvic_timer->NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(nvic_timer); //inicjalizacja NVIC
 	NVIC_EnableIRQ(TIM2_IRQn); //w³¹czenie przerwania NVIC
 
 	TIM_TimeBaseInit(TIM2, timer);
@@ -36,14 +30,15 @@ void inicjalizacja_TIM2(void)
 	TIM_Cmd(TIM2, ENABLE);
 
 	free(timer);
-	free(nvic_timer);
 }
 
 void TIM2_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //sprawdzenie Ÿród³a
 	{
-		LED_READY_GPIO->ODR ^= (LED_READY_PIN);
+		//LED_READY_GPIO->ODR ^= (LED_READY_PIN);
 		TIM_ClearFlag(TIM2, TIM_FLAG_Update); //wyzerowanie flagi przerwania
 	}
+
+
 }

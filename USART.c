@@ -16,6 +16,8 @@ void inicjalizacja_USART()
 	GPIO_Init(GPIOA, usart_gpio);
 	free(usart_gpio);
 
+	USART_Cmd(USART2, ENABLE);
+
 	USART_InitTypeDef *usart = malloc(sizeof(USART_InitTypeDef));
 	usart->USART_BaudRate = 115200;
 	usart->USART_HardwareFlowControl = USART_HardwareFlowControl_None;
@@ -24,31 +26,25 @@ void inicjalizacja_USART()
 	usart->USART_StopBits = USART_StopBits_1;
 	usart->USART_WordLength = USART_WordLength_8b;
 
-	//konfigurowanie przerwania usart
-	NVIC_InitTypeDef *usart_irq = malloc(sizeof(NVIC_InitTypeDef));
-	usart_irq->NVIC_IRQChannel = USART2_IRQn; //USART2
-	usart_irq->NVIC_IRQChannelPreemptionPriority = 0;
-	usart_irq->NVIC_IRQChannelSubPriority = 1;
-	usart_irq->NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(usart_irq); //inicjalizacja NVIC
-	NVIC_EnableIRQ(USART2_IRQn); //w³¹czenie przerwania NVIC
-
 	USART_Init(USART2, usart);
 	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
-
-	USART_Cmd(USART2, ENABLE);
+	NVIC_EnableIRQ(USART2_IRQn); //w³¹czenie przerwania NVIC
 
 	free(usart);
-	free(usart_irq);
+	//free(usart_irq);
 }
 
 void USART2_IRQHandler(void)
 {
-	uint16_t *dane = malloc (sizeof (uint16_t));
+	uint16_t dane=0;
+
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) //sprawdzenie czy aby na pewno odpowiednie przerwanie
 	{
-		*dane = USART_ReceiveData(USART2);
-		USART_SendData(USART2, *dane);
+		dane = USART_ReceiveData(USART2);
+		USART_SendData(USART2, dane);
+		if (dane=='q')
+			LED_READY_WL
+		else if (dane=='t')
+			LED_READY_WYL
 	}
-	free(dane);
 }
