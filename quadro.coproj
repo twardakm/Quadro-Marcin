@@ -76,6 +76,7 @@
     <Component id="444" name="GPIO" path="" type="2"/>
     <Component id="453" name="I2C" path="" type="2"/>
     <Component id="456" name="TIM" path="" type="2"/>
+    <Component id="458" name="USART" path="" type="2"/>
     <Component id="492" name="Misc" path="" type="2"/>
   </Components>
   <Files>
@@ -96,20 +97,24 @@
     <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_nvic.h" path="stm_lib/inc/stm32f10x_nvic.h" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
-    <File name="cmsis" path="" type="2"/>
     <File name="inicjalizacja.c" path="inicjalizacja.c" type="1"/>
+    <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="USART.h" path="USART.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_i2c.h" path="stm_lib/inc/stm32f10x_i2c.h" type="1"/>
     <File name="syscalls" path="" type="2"/>
+    <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
     <File name="stm_lib/src/stm32f10x_i2c.c" path="stm_lib/src/stm32f10x_i2c.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
     <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
+    <File name="USART.c" path="USART.c" type="1"/>
     <File name="LED.h" path="LED.h" type="1"/>
   </Files>
 </Project>

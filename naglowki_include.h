@@ -7,3 +7,4 @@
 #include "stm_lib/inc/stm32f10x_rcc.h"
 #include "stm_lib/inc/stm32f10x_tim.h"
 #include "stm_lib/inc/stm32f10x_nvic.h"
+#include "stm_lib/inc/stm32f10x_usart.h"
