@@ -1,6 +1,11 @@
 #include "naglowki_include.h"
 #include "USART.h"
 #include "LED.h"
+#include "dane.h"
+/*extern potrzebne aby poinformowaæ kompilator ¿e zmienna zosta³a zadeklarowana
+ * w innym pliku. Bez tego nie dzia³a
+ */
+extern volatile daneTypeDef dane_czujniki;
 
 void inicjalizacja_USART()
 {
@@ -34,6 +39,23 @@ void inicjalizacja_USART()
 	//free(usart_irq);
 }
 
+void wyslij_dane()
+{
+	USART_SendData(USART2, dane_czujniki.akcel.x_h);
+	USART_SendData(USART2, dane_czujniki.akcel.x_l);
+	USART_SendData(USART2, dane_czujniki.akcel.y_h);
+	USART_SendData(USART2, dane_czujniki.akcel.y_l);
+	USART_SendData(USART2, dane_czujniki.akcel.z_h);
+	USART_SendData(USART2, dane_czujniki.akcel.z_l);
+
+	USART_SendData(USART2, dane_czujniki.zyro.x_h);
+	USART_SendData(USART2, dane_czujniki.zyro.x_l);
+	USART_SendData(USART2, dane_czujniki.zyro.y_h);
+	USART_SendData(USART2, dane_czujniki.zyro.y_l);
+	USART_SendData(USART2, dane_czujniki.zyro.z_h);
+	USART_SendData(USART2, dane_czujniki.zyro.z_l);
+}
+
 void USART2_IRQHandler(void)
 {
 	uint16_t dane=0;
@@ -41,10 +63,19 @@ void USART2_IRQHandler(void)
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) //sprawdzenie czy aby na pewno odpowiednie przerwanie
 	{
 		dane = USART_ReceiveData(USART2);
-		USART_SendData(USART2, dane);
-		if (dane=='q')
-			LED_READY_WL
-		else if (dane=='t')
-			LED_READY_WYL
+		if (dane == DANE_START)
+		{
+			USART_SendData(USART2, dane_czujniki.akcel.x_h);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+			USART_SendData(USART2, dane_czujniki.akcel.x_l);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+			USART_SendData(USART2, dane_czujniki.akcel.x_h);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+			USART_SendData(USART2, dane_czujniki.akcel.x_l);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+
+		}
+		else
+			USART_SendData(USART2, 1);
 	}
 }

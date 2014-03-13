@@ -5,17 +5,18 @@
 #include "LED.h"
 #include "USART.h"
 #include "NVIC.h"
+#include "dane.h"
 
 int main(void)
 {
 	inicjalizacja_zegara();
 	inicjalizacja_zasilania();
+	inicjalizacja_dane();
 	inicjalizacja_LED();
 	inicjalizacja_USART();
 	inicjalizacja_NVIC();
 
     while(1)
     {
-    	//USART_SendData(USART2, 100);
     }
 }
