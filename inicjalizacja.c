@@ -14,6 +14,10 @@ void inicjalizacja_zasilania(void)
 	//USART2 + GPIOA
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	//APB1 dla TIM2
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	//I2C2
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); //funkcje alternatywne pinów
 }

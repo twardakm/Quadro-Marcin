@@ -2,7 +2,6 @@
 #include "USART.h"
 #include "LED.h"
 #include "dane.h"
-#include "geoffreymbrown/i2c_.h"
 /*extern potrzebne aby poinformowaæ kompilator ¿e zmienna zosta³a zadeklarowana
  * w innym pliku. Bez tego nie dzia³a
  */
@@ -80,8 +79,6 @@ void USART2_IRQHandler(void)
 		dane = USART_ReceiveData(USART2);
 		if (dane == DANE_START)
 		{
-			I2C_Write(I2C2, &rejestr, 1, 0x30);
-			I2C_Read(I2C2, &bufor, 1, 0x30);
 			dane_czujniki.akcel.x_l = bufor;
 			wyslij_dane();
 		}
