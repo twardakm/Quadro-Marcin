@@ -18,5 +18,6 @@ int main(void)
 
     while(1)
     {
+    	//USART_SendData(USART2, 100);
     }
 }

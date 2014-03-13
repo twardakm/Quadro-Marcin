@@ -2,6 +2,7 @@
 #include "USART.h"
 #include "LED.h"
 #include "dane.h"
+#include "geoffreymbrown/i2c_.h"
 /*extern potrzebne aby poinformowaæ kompilator ¿e zmienna zosta³a zadeklarowana
  * w innym pliku. Bez tego nie dzia³a
  */
@@ -42,38 +43,47 @@ void inicjalizacja_USART()
 void wyslij_dane()
 {
 	USART_SendData(USART2, dane_czujniki.akcel.x_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.x_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.y_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.y_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.z_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.z_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
 	USART_SendData(USART2, dane_czujniki.zyro.x_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.x_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.y_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.y_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.z_h);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.z_l);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 }
 
 void USART2_IRQHandler(void)
 {
 	uint16_t dane=0;
+	uint8_t rejestr = 0x28;
+	uint8_t bufor;
 
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) //sprawdzenie czy aby na pewno odpowiednie przerwanie
 	{
 		dane = USART_ReceiveData(USART2);
 		if (dane == DANE_START)
 		{
-			USART_SendData(USART2, dane_czujniki.akcel.x_h);
-			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-			USART_SendData(USART2, dane_czujniki.akcel.x_l);
-			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-			USART_SendData(USART2, dane_czujniki.akcel.x_h);
-			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-			USART_SendData(USART2, dane_czujniki.akcel.x_l);
-			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-
+			I2C_Write(I2C2, &rejestr, 1, 0x30);
+			I2C_Read(I2C2, &bufor, 1, 0x30);
+			dane_czujniki.akcel.x_l = bufor;
+			wyslij_dane();
 		}
 		else
 			USART_SendData(USART2, 1);
