@@ -138,3 +138,73 @@ int sprawdz_blad_I2C()
 	return 0;
 
 }
+
+void wyslij_I2C(uint8_t adres, uint8_t rejestr, uint8_t dane)
+{
+	while(I2C2->SR2 & I2C_SR2_BUSY)
+	{
+		if(sprawdz_blad_I2C())
+		{
+			inicjalizacja_I2C();
+			return;
+		}
+	}
+
+	I2C2->CR1 |= I2C_CR1_START;
+
+	while(!(I2C2->SR1 & I2C_SR1_SB))
+	{
+		if(sprawdz_blad_I2C())
+		{
+			inicjalizacja_I2C();
+			return;
+		}
+	}
+
+	I2C2->SR1;
+	I2C2->DR = adres;
+	while (!(I2C2->SR1 & I2C_SR1_ADDR))
+	{
+		if(sprawdz_blad_I2C())
+		{
+			inicjalizacja_I2C();
+			return;
+		}
+	}
+	I2C2->SR1;
+	I2C2->SR2;
+
+
+		while (!(I2C2->SR1 & I2C_SR1_TXE))
+		{
+			if(sprawdz_blad_I2C())
+			{
+				inicjalizacja_I2C();
+				return;
+			}
+		}
+		I2C2->DR = rejestr;
+
+
+		while (!(I2C2->SR1 & I2C_SR1_TXE))
+		{
+			if(sprawdz_blad_I2C())
+			{
+				inicjalizacja_I2C();
+				return;
+			}
+		}
+		I2C2->DR = dane;
+
+
+	while (!(I2C2->SR1 & I2C_SR1_TXE) || !(I2C2->SR1 & I2C_SR1_BTF))
+	{
+		if(sprawdz_blad_I2C())
+		{
+			inicjalizacja_I2C();
+			return;
+		}
+	}
+
+	I2C2->CR1 |= I2C_CR1_STOP;
+}

@@ -90,6 +90,17 @@ void USART2_IRQHandler(void)
 			dane_czujniki.akcel.z_l = bufor[4];
 			dane_czujniki.akcel.z_h = bufor[5];
 			//--------------------------
+			/*odczyt z zyroskopu
+			* ------------------------
+			*/
+			odczyt_I2C(0xD4,0xA8,6,bufor);
+			dane_czujniki.zyro.x_l = bufor[0];
+			dane_czujniki.zyro.x_h = bufor[1];
+			dane_czujniki.zyro.y_l = bufor[2];
+			dane_czujniki.zyro.y_h = bufor[3];
+			dane_czujniki.zyro.z_l = bufor[4];
+			dane_czujniki.zyro.z_h = bufor[5];
+			//--------------------------
 			wyslij_dane();
 		}
 		else
