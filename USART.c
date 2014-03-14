@@ -3,6 +3,7 @@
 #include "LED.h"
 #include "dane.h"
 #include "I2C.h"
+#include "sensory.h"
 /*extern potrzebne aby poinformowaæ kompilator ¿e zmienna zosta³a zadeklarowana
  * w innym pliku. Bez tego nie dzia³a
  */
@@ -82,7 +83,7 @@ void USART2_IRQHandler(void)
 			/*odczyt z akcelerometru
 			 * ------------------------
 			 */
-			odczyt_I2C(0x30,0xA8,6,bufor);
+			odczyt_I2C(AKCEL_ADR,0xA8,6,bufor);
 			dane_czujniki.akcel.x_l = bufor[0];
 			dane_czujniki.akcel.x_h = bufor[1];
 			dane_czujniki.akcel.y_l = bufor[2];
@@ -93,7 +94,7 @@ void USART2_IRQHandler(void)
 			/*odczyt z zyroskopu
 			* ------------------------
 			*/
-			odczyt_I2C(0xD4,0xA8,6,bufor);
+			odczyt_I2C(ZYRO_ADR,0xA8,6,bufor);
 			dane_czujniki.zyro.x_l = bufor[0];
 			dane_czujniki.zyro.x_h = bufor[1];
 			dane_czujniki.zyro.y_l = bufor[2];

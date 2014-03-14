@@ -7,7 +7,7 @@ void inicjalizacja_akcelerometr()
 	wyslij_I2C(AKCEL_ADR, 0x20, 0b10010111);//ustawienie czestotliwosci
 	wyslij_I2C(AKCEL_ADR, 0x21, 0b00000000); //filtrowanie wylaczone
 	wyslij_I2C(AKCEL_ADR, 0x22, 0b00000000); //bit 4 - interrupt poprowadzony (nieaktywny)
-	wyslij_I2C(AKCEL_ADR, 0x23, 0b00101000); //wysoka rozdzielczosci +-8G
+	wyslij_I2C(AKCEL_ADR, 0x23, 0b00111000); //wysoka rozdzielczosci +-8G
 	wyslij_I2C(AKCEL_ADR, 0x24, 0b00000000); //FIFO (bylo wlaczone przez Kamila)
 }
 
