@@ -53,5 +53,5 @@ void odczyt_I2C(uint8_t adres, uint8_t rejestr)
 	dane_czujniki.akcel.x_h = I2C_ReceiveData(I2C2);
 	I2C_GenerateSTOP(I2C2, ENABLE);
 
-	dane_czujniki.akcel.x_h = (i2c_read2(48, 0x29)&0xFF);
+	//dane_czujniki.akcel.x_h = (i2c_read2(48, 0x29)&0xFF);
 }
