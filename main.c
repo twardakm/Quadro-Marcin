@@ -20,6 +20,7 @@ int main(void)
 	inicjalizacja_USART();
 	inicjalizacja_NVIC();
 	inicjalizacja_akcelerometr();
+	inicjalizacja_zyroskop();
 
     while(1)
     {
