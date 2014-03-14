@@ -1,5 +1,6 @@
 #include "I2C.h"
 #include "dane.h"
+#include "sensory.h"
 
 extern volatile daneTypeDef dane_czujniki;
 
@@ -35,30 +36,22 @@ void inicjalizacja_I2C()
 
 void odczyt_I2C(uint8_t adres, uint8_t rejestr)
 {
-	/* While the bus is busy */
-	//while(I2C_GetFlagStatus(I2C2, I2C_FLAG_BUSY));
-	/*I2C_GenerateSTART(I2C2, ENABLE); // Send START condition
+	while(I2C_GetFlagStatus(I2C2, I2C_FLAG_BUSY));
+	I2C_GenerateSTART(I2C2, ENABLE);
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT));
-
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Transmitter);    // adres urz¹dzenia SLAVE
+	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Transmitter);
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-
-	I2C_SendData(I2C2, 0x27);
+	I2C_SendData(I2C2, 0x29);
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
 	I2C_GenerateSTART(I2C2, ENABLE); // Send START condition
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT));
-
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Receiver);    // adres urz¹dzenia SLAVE
+	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Receiver);
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
-
-	dane_czujniki.akcel.x_h=I2C_ReceiveData(I2C2);
-	dane_czujniki.akcel.x_l=I2C_ReceiveData(I2C2);
-	dane_czujniki.akcel.y_l++;
+	I2C_AcknowledgeConfig(I2C2, ENABLE);
+	I2C_AcknowledgeConfig(I2C2, DISABLE);
 	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_RECEIVED));
-
-
-	I2C_GenerateSTOP(I2C2, ENABLE); // Send STOP condition */
+	dane_czujniki.akcel.x_h = I2C_ReceiveData(I2C2);
+	I2C_GenerateSTOP(I2C2, ENABLE);
 
 	dane_czujniki.akcel.x_h = (i2c_read2(48, 0x29)&0xFF);
 }
