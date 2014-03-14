@@ -34,117 +34,107 @@ void inicjalizacja_I2C()
 	I2C_Init(I2C2, i2c);
 }
 
-void odczyt_I2C(uint8_t adres, uint8_t rejestr)
+void odczyt_I2C(uint8_t adres, uint8_t rejestr, uint8_t dlugosc, uint8_t *bufor)
 {
-	/*while(I2C_GetFlagStatus(I2C2, I2C_FLAG_BUSY));
-	I2C_GenerateSTART(I2C2, ENABLE);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT));
-
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Transmitter);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-
-	I2C_SendData(I2C2, 0x28);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
-	I2C_GenerateSTART(I2C2, ENABLE); // Send START condition
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT));
-
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Receiver);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
-
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_RECEIVED));
-	dane_czujniki.akcel.x_l = I2C_ReceiveData(I2C2);
-	I2C_AcknowledgeConfig(I2C2, DISABLE);
-
-
-
-	I2C_GenerateSTOP(I2C2, ENABLE);*/
-
-	uint32_t dummy;
-
-	while(I2C2->SR2 & I2C_SR2_BUSY)
+	while(I2C2->SR2 & I2C_SR2_BUSY) //sprawdzanie czy I2C wolny
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
 
-	I2C2->CR1 |= I2C_CR1_START;
-	while( !( I2C2->SR1 & I2C_SR1_SB ))
+	I2C2->CR1 |= I2C_CR1_START; //Wyslanie START
+	while( !( I2C2->SR1 & I2C_SR1_SB )) //sprawdzanie czy siê wyslalo
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	I2C2->DR = adres;
+	I2C2->DR = adres; //przed zapisaniem SR2, trzeba do DR zapisaæ adres
 	while( !( I2C2->SR1 & I2C_SR1_ADDR ))
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	dummy = I2C2->SR2;
+	I2C2->SR2; //konieczne wg datasheet, czyszczenie rejestru SR1
 	while( !( I2C2->SR1 & I2C_SR1_TXE ))
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	I2C2->DR = reg_adres;
+
+	/*
+	wys³anie nr rejestru do czytania, najbardziej
+	znacz¹cy bit musi byæ równy 1 */
+
+	I2C2->DR = rejestr;
+
 	while( !( I2C2->SR1 & I2C_SR1_BTF ))
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	I2C2->CR1 |= I2C_CR1_START;
+	I2C2->CR1 |= I2C_CR1_START; //Wyslanie START
 	while( !( I2C2->SR1 & I2C_SR1_SB ))
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	I2C2->DR = adres | 0x01;
+	I2C2->DR = adres | 0x01; //Wyslanie adresu czytania
 	while( !( I2C2->SR1 & I2C_SR1_ADDR ))
 	{
-		if(error_check())
+		if(sprawdz_blad_I2C())
 		{
 			//i2c_config();
 			return;
 		}
 	}
-	dummy = I2C2->SR2;
+	I2C2->SR2; //konieczne wg datasheet, czyszczenie rejestru SR1
 
-	I2C2->CR1 |= I2C_CR1_ACK;
-	while( len )
+	I2C2->CR1 |= I2C_CR1_ACK; //wlaczenie potwierdzenia master
+	for(; dlugosc > 0; dlugosc-- )
 	{
-		if( len == 1 )
-		I2C2->CR1 &= ~I2C_CR1_ACK;
+		if( dlugosc == 1 )
+		I2C2->CR1 &= ~I2C_CR1_ACK; //przy ostatnim wylaczenie potwierdzenia
 
 		while( !( I2C2->SR1 & I2C_SR1_RXNE ))
 		{
-		   if(error_check())
+		   if(sprawdz_blad_I2C())
 		   {
 			   //i2c_config();
 			   return;
 		   }
 		}
-		*( dane++ ) = I2C2->DR;
-
-		len--;
+		*(bufor++) = I2C2->DR;
 	}
 
 	I2C2->CR1 |= I2C_CR1_STOP;
+}
+
+int sprawdz_blad_I2C()
+{
+	if((I2C2->SR1 & I2C_SR1_TIMEOUT) | (I2C2->SR1 & I2C_SR1_PECERR) | (I2C2->SR1 & I2C_SR1_AF) | (I2C2->SR1 & I2C_SR1_ARLO) |
+			(I2C2->SR1 & I2C_SR1_BERR))
+	{
+		//sensors_error_flag = 1;
+		return 1;
+	}
+	return 0;
+
 }

@@ -20,7 +20,7 @@ void i2c_write2(uint8_t address, uint8_t reg, uint8_t data)
 
 void i2c_write(uint8_t address, uint8_t* data, uint32_t length)
 {
-	//dzia³a przy skomentowanym inicjalizacja_I2C
+	/*//dzia³a przy skomentowanym inicjalizacja_I2C
 	uint32_t dummy;
 
 	while(I2C2->SR2 & I2C_SR2_BUSY)
@@ -77,7 +77,7 @@ void i2c_write(uint8_t address, uint8_t* data, uint32_t length)
 		}
 	}
 
-	I2C2->CR1 |= I2C_CR1_STOP;
+	I2C2->CR1 |= I2C_CR1_STOP;*/
 }
 
 uint8_t i2c_read2(uint8_t adres, uint8_t reg_adres)
@@ -89,104 +89,6 @@ uint8_t i2c_read2(uint8_t adres, uint8_t reg_adres)
 
 void i2c_read( uint8_t adres, uint8_t reg_adres, uint8_t * dane, uint8_t len )
 {
-	uint32_t dummy;
 
-		while(I2C2->SR2 & I2C_SR2_BUSY)
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-
-		I2C2->CR1 |= I2C_CR1_START;
-		while( !( I2C2->SR1 & I2C_SR1_SB ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		I2C2->DR = adres;
-		while( !( I2C2->SR1 & I2C_SR1_ADDR ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		dummy = I2C2->SR2;
-		while( !( I2C2->SR1 & I2C_SR1_TXE ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		I2C2->DR = reg_adres;
-		while( !( I2C2->SR1 & I2C_SR1_BTF ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		I2C2->CR1 |= I2C_CR1_START;
-		while( !( I2C2->SR1 & I2C_SR1_SB ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		I2C2->DR = adres | 0x01;
-		while( !( I2C2->SR1 & I2C_SR1_ADDR ))
-		{
-			if(error_check())
-			{
-				//i2c_config();
-				return;
-			}
-		}
-		dummy = I2C2->SR2;
-
-		 I2C2->CR1 |= I2C_CR1_ACK;
-		while( len )
-		{
-		   if( len == 1 )
-		      I2C2->CR1 &= ~I2C_CR1_ACK;
-
-		   while( !( I2C2->SR1 & I2C_SR1_RXNE ))
-		   {
-			   if(error_check())
-			   	{
-				   //i2c_config();
-			   		return;
-			   	}
-		   }
-		   *( dane++ ) = I2C2->DR;
-
-		   len--;
-		}
-
-		I2C2->CR1 |= I2C_CR1_STOP;
-
-}
-
-int error_check()
-{
-	if((I2C2->SR1 & I2C_SR1_TIMEOUT) | (I2C2->SR1 & I2C_SR1_PECERR) | (I2C2->SR1 & I2C_SR1_AF) | (I2C2->SR1 & I2C_SR1_ARLO) |
-			(I2C2->SR1 & I2C_SR1_BERR))
-	{
-		//sensors_error_flag = 1;
-		return 1;
-	}
-	return 0;
 
 }
