@@ -91,93 +91,91 @@ void i2c_read( uint8_t adres, uint8_t reg_adres, uint8_t * dane, uint8_t len )
 {
 	uint32_t dummy;
 
-	while(I2C_GetFlagStatus(I2C2, I2C_FLAG_BUSY))
-	{
-		if(error_check())
+		while(I2C2->SR2 & I2C_SR2_BUSY)
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
 
-	I2C_GenerateSTART(I2C2, ENABLE); // Send START condition
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT))
-	{
-		if(error_check())
+		I2C2->CR1 |= I2C_CR1_START;
+		while( !( I2C2->SR1 & I2C_SR1_SB ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Transmitter);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-	{
-		if(error_check())
+		I2C2->DR = adres;
+		while( !( I2C2->SR1 & I2C_SR1_ADDR ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
-	dummy = I2C2->SR2;
-	/*while( !( I2C2->SR1 & I2C_SR1_TXE ))
-	{
-		if(error_check())
+		dummy = I2C2->SR2;
+		while( !( I2C2->SR1 & I2C_SR1_TXE ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}*/
-	I2C_SendData(I2C2, 0x29);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_TRANSMITTED))
-	{
-		if(error_check())
+		I2C2->DR = reg_adres;
+		while( !( I2C2->SR1 & I2C_SR1_BTF ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
-	I2C_GenerateSTART(I2C2, ENABLE);
-	while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT))
-	{
-		if(error_check())
+		I2C2->CR1 |= I2C_CR1_START;
+		while( !( I2C2->SR1 & I2C_SR1_SB ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
-
-	I2C_Send7bitAddress(I2C2, 0x30, I2C_Direction_Receiver);
-	while( !( I2C2->SR1 & I2C_SR1_ADDR ))
-	{
-		if(error_check())
+		I2C2->DR = adres | 0x01;
+		while( !( I2C2->SR1 & I2C_SR1_ADDR ))
 		{
-			inicjalizacja_I2C();
-			return;
+			if(error_check())
+			{
+				//i2c_config();
+				return;
+			}
 		}
-	}
-	dummy = I2C2->SR2;
+		dummy = I2C2->SR2;
 
-	I2C_AcknowledgeConfig(I2C2, ENABLE);
-	I2C_AcknowledgeConfig(I2C2, DISABLE);
+		 I2C2->CR1 |= I2C_CR1_ACK;
+		while( len )
+		{
+		   if( len == 1 )
+		      I2C2->CR1 &= ~I2C_CR1_ACK;
 
-	 //I2C2->CR1 |= I2C_CR1_ACK;
-	//asm("nop");
-	//asm("nop");
-	      //I2C2->CR1 &= ~I2C_CR1_ACK;
+		   while( !( I2C2->SR1 & I2C_SR1_RXNE ))
+		   {
+			   if(error_check())
+			   	{
+				   //i2c_config();
+			   		return;
+			   	}
+		   }
+		   *( dane++ ) = I2C2->DR;
 
-		while(!I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_RECEIVED))
-	   {
-		   if(error_check())
-		   	{
-			   inicjalizacja_I2C();
-		   		return;
-		   	}
-	   }
-	   *( dane++ ) = I2C_ReceiveData(I2C2);
+		   len--;
+		}
 
-	   //len--;
-
-	I2C_GenerateSTOP(I2C2, ENABLE);
+		I2C2->CR1 |= I2C_CR1_STOP;
 
 }
 
