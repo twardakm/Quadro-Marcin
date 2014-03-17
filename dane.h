@@ -13,6 +13,10 @@ typedef struct
 	uint8_t y_l;
 	uint8_t z_h;
 	uint8_t z_l;
+
+	uint16_t x;
+	uint16_t y;
+	uint16_t z;
 } akcelTypeDef;
 
 typedef struct
@@ -23,12 +27,22 @@ typedef struct
 	uint8_t y_l;
 	uint8_t z_h;
 	uint8_t z_l;
+
+	uint16_t x;
+	uint16_t y;
+	uint16_t z;
 } zyroTypeDef;
+
+typedef struct
+{
+	uint32_t kat_z; //obrót wokó³ z
+} pozycjaTypeDef;
 
 typedef struct
 {
 	akcelTypeDef akcel;
 	zyroTypeDef zyro;
+	pozycjaTypeDef pozycja;
 }daneTypeDef;
 
 void inicjalizacja_dane();

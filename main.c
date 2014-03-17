@@ -21,6 +21,7 @@ int main(void)
 	inicjalizacja_NVIC();
 	inicjalizacja_akcelerometr();
 	inicjalizacja_zyroskop();
+	inicjalizacja_TIM3();
 
     while(1)
     {

@@ -8,5 +8,6 @@
 
 
 void inicjalizacja_akcelerometr();
+void inicjalizacja_TIM3();
 void inicjalizacja_zyroskop();
 #endif

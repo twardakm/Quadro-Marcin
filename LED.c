@@ -22,9 +22,6 @@ void inicjalizacja_TIM2(void)
 	timer->TIM_Period = 65535; //do tej liczby zlicza
 	timer->TIM_ClockDivision = 0;
 
-	//konfigurowanie przerwania timera
-	NVIC_EnableIRQ(TIM2_IRQn); //w³¹czenie przerwania NVIC
-
 	TIM_TimeBaseInit(TIM2, timer);
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //w³¹czenie przerwania TIM2
 	TIM_Cmd(TIM2, ENABLE);
@@ -34,11 +31,9 @@ void inicjalizacja_TIM2(void)
 
 void TIM2_IRQHandler(void)
 {
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //sprawdzenie Ÿród³a
+	/*if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //sprawdzenie Ÿród³a
 	{
 		LED_READY_GPIO->ODR ^= (LED_READY_PIN);
 		TIM_ClearFlag(TIM2, TIM_FLAG_Update); //wyzerowanie flagi przerwania
-	}
-
-
+	}*/
 }

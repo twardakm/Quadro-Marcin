@@ -73,37 +73,12 @@ void wyslij_dane()
 void USART2_IRQHandler(void)
 {
 	uint16_t dane=0;
-	uint8_t bufor[6]; //6 - tyle danych zczytujemy
 
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) //sprawdzenie czy aby na pewno odpowiednie przerwanie
 	{
 		dane = USART_ReceiveData(USART2);
 		if (dane == DANE_START)
-		{
-			/*odczyt z akcelerometru
-			 * ------------------------
-			 */
-			odczyt_I2C(AKCEL_ADR,0xA8,6,bufor);
-			dane_czujniki.akcel.x_l = bufor[0];
-			dane_czujniki.akcel.x_h = bufor[1];
-			dane_czujniki.akcel.y_l = bufor[2];
-			dane_czujniki.akcel.y_h = bufor[3];
-			dane_czujniki.akcel.z_l = bufor[4];
-			dane_czujniki.akcel.z_h = bufor[5];
-			//--------------------------
-			/*odczyt z zyroskopu
-			* ------------------------
-			*/
-			odczyt_I2C(ZYRO_ADR,0xA8,6,bufor);
-			dane_czujniki.zyro.x_l = bufor[0];
-			dane_czujniki.zyro.x_h = bufor[1];
-			dane_czujniki.zyro.y_l = bufor[2];
-			dane_czujniki.zyro.y_h = bufor[3];
-			dane_czujniki.zyro.z_l = bufor[4];
-			dane_czujniki.zyro.z_h = bufor[5];
-			//--------------------------
 			wyslij_dane();
-		}
 		else
 			USART_SendData(USART2, 1);
 	}
