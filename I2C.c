@@ -17,6 +17,7 @@ void inicjalizacja_I2C_GPIO()
 
 void inicjalizacja_I2C()
 {
+	inicjalizacja_I2C_GPIO();
 	//SPRAWDZONE jest OK
 	I2C_InitTypeDef  *i2c = malloc (sizeof (I2C_InitTypeDef));
 

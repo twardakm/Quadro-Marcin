@@ -8,6 +8,7 @@
 
 
 void inicjalizacja_akcelerometr();
+void inicjalizacja_sensory();
 void inicjalizacja_SysTick();
 void inicjalizacja_zyroskop();
 #endif

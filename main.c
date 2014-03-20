@@ -19,13 +19,10 @@ int main(void)
 
 	inicjalizacja_LED();
 
-	inicjalizacja_I2C_GPIO();
 	inicjalizacja_I2C();
 	inicjalizacja_USART();
 
-	inicjalizacja_akcelerometr();
-	inicjalizacja_zyroskop();
-	inicjalizacja_SysTick();
+	inicjalizacja_sensory();
 
     while(1)
     {

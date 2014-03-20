@@ -16,7 +16,14 @@ void inicjalizacja_akcelerometr()
 	wyslij_I2C(AKCEL_ADR, 0x24, 0b00000000); //FIFO (bylo wlaczone przez Kamila)
 }
 
-void inicjalizacja_SysTick(void)
+void inicjalizacja_sensory()
+{
+	inicjalizacja_akcelerometr();
+	inicjalizacja_zyroskop();
+	inicjalizacja_SysTick();
+}
+
+void inicjalizacja_SysTick(void) //na SysTick oparty jest odczyt danych
 {
 	SysTick_Config(SystemCoreClock / 100); //co 10 ms
 }
