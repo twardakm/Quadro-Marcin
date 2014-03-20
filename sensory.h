@@ -11,4 +11,7 @@ void inicjalizacja_akcelerometr();
 void inicjalizacja_sensory();
 void inicjalizacja_SysTick();
 void inicjalizacja_zyroskop();
+
+void odczyt_akcelerometr(uint8_t *bufor);
+void odczyt_zyroskop(uint8_t *bufor);
 #endif

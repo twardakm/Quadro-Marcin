@@ -38,10 +38,8 @@ void inicjalizacja_zyroskop()
 	wyslij_I2C(ZYRO_ADR, 0x24, 0b00000000); //fifo, filtr wylaczone
 }
 
-void SysTick_Handler(void) //co 10 ms
+void odczyt_akcelerometr(uint8_t *bufor)
 {
-	uint8_t bufor[6]; //6 - tyle danych zczytujemy
-
 	/*odczyt z akcelerometru
 	 * ------------------------
 	 */
@@ -57,6 +55,10 @@ void SysTick_Handler(void) //co 10 ms
 	dane_czujniki.akcel.y = (dane_czujniki.akcel.y_h<<8)+dane_czujniki.akcel.y_l;
 	dane_czujniki.akcel.z = (dane_czujniki.akcel.z_h<<8)+dane_czujniki.akcel.z_l;
 	//--------------------------
+}
+
+void odczyt_zyroskop(uint8_t *bufor)
+{
 	/*odczyt z zyroskopu
 	* ------------------------
 	*/
@@ -72,4 +74,11 @@ void SysTick_Handler(void) //co 10 ms
 	dane_czujniki.zyro.y = (dane_czujniki.zyro.y_h<<8)+dane_czujniki.zyro.y_l;
 	dane_czujniki.zyro.z = (dane_czujniki.zyro.z_h<<8)+dane_czujniki.zyro.z_l;
 	//--------------------------
+}
+
+void SysTick_Handler(void) //co 10 ms przerwanie SysTick
+{
+	uint8_t bufor[6]; //6 - tyle danych zczytujemy
+	odczyt_akcelerometr(bufor);
+	odczyt_zyroskop(bufor);
 }
