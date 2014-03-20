@@ -43,6 +43,9 @@ void inicjalizacja_USART()
 
 void wyslij_dane()
 {
+	/*Wysy³anie danych z AKCELEROMETRU
+	 * -------------------------------
+	 */
 	USART_SendData(USART2, dane_czujniki.akcel.x_h);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.x_l);
@@ -55,7 +58,11 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.akcel.z_l);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	/* -------------------------------- */
 
+	/*Wysy³anie danych z ZYROSKOPU
+	 * --------------------------------
+	 */
 	USART_SendData(USART2, dane_czujniki.zyro.x_h);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.x_l);
@@ -68,6 +75,24 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.z_l);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	/* -------------------------------- */
+
+	/*Wysy³anie obliczonych danych
+	 * --------------------------------
+	 */
+	uint32_t temp = dane_czujniki.pozycja.kat_z;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	/* -------------------------------- */
 }
 
 void USART2_IRQHandler(void)

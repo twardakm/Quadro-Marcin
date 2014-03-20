@@ -81,4 +81,10 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 	uint8_t bufor[6]; //6 - tyle danych zczytujemy
 	odczyt_akcelerometr(bufor);
 	odczyt_zyroskop(bufor);
+
+	//obliczanie kata z
+	if (dane_czujniki.zyro.z > 32768)
+		dane_czujniki.pozycja.kat_z += (65535 - dane_czujniki.zyro.z) * 10;
+	else
+		dane_czujniki.pozycja.kat_z += dane_czujniki.zyro.z * 10;
 }
