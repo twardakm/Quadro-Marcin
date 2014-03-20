@@ -9,7 +9,7 @@ extern volatile daneTypeDef dane_czujniki;
 uint32_t dodaj_kat(uint32_t nowy, uint32_t stary)
 {
 	stary += nowy;
-	if (stary > 360000)
+	if (stary >= 360000)
 		stary -= 360000;
 	return stary;
 }
@@ -101,8 +101,7 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 
 	//obliczanie kata z
 	if (dane_czujniki.zyro.z > 32768)
-		dane_czujniki.pozycja.kat_z = odejmij_kat((65535 - dane_czujniki.zyro.z) * DT, dane_czujniki.pozycja.kat_z);
-		//dane_czujniki.pozycja.kat_z += (65535 - dane_czujniki.zyro.z )
+		dane_czujniki.pozycja.kat_z = odejmij_kat((65535 - dane_czujniki.zyro.z) * DT * MDEG, dane_czujniki.pozycja.kat_z);
 	else
-		dane_czujniki.pozycja.kat_z = dodaj_kat(dane_czujniki.zyro.z * DT, dane_czujniki.pozycja.kat_z);
+		dane_czujniki.pozycja.kat_z = dodaj_kat(dane_czujniki.zyro.z * DT * MDEG, dane_czujniki.pozycja.kat_z);
 }

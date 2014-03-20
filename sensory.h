@@ -7,6 +7,7 @@
 #define ZYRO_ADR  0xD4
 
 #define DT 0.01 //10 ms jako interwa³ pomiêdzy odbiorem kolejnych danych
+#define MDEG 70 //milistopni na 1 cyfrê z ¿yroskopu
 
 uint32_t dodaj_kat(uint32_t nowy, uint32_t stary);
 uint32_t odejmij_kat(uint32_t nowy, uint32_t stary);
