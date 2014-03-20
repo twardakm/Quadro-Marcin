@@ -13,15 +13,19 @@ int main(void)
 {
 	inicjalizacja_zegara();
 	inicjalizacja_zasilania();
+	inicjalizacja_NVIC();
+
 	inicjalizacja_dane();
+
 	inicjalizacja_LED();
+
 	inicjalizacja_I2C_GPIO();
 	inicjalizacja_I2C();
 	inicjalizacja_USART();
-	inicjalizacja_NVIC();
+
 	inicjalizacja_akcelerometr();
 	inicjalizacja_zyroskop();
-	inicjalizacja_TIM3();
+	inicjalizacja_SysTick();
 
     while(1)
     {

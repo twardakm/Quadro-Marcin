@@ -31,9 +31,9 @@ void inicjalizacja_TIM2(void)
 
 void TIM2_IRQHandler(void)
 {
-	/*if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //sprawdzenie Ÿród³a
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //sprawdzenie Ÿród³a
 	{
 		LED_READY_GPIO->ODR ^= (LED_READY_PIN);
 		TIM_ClearFlag(TIM2, TIM_FLAG_Update); //wyzerowanie flagi przerwania
-	}*/
+	}
 }
