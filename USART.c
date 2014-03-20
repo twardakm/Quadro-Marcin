@@ -71,9 +71,9 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	USART_SendData(USART2, dane_czujniki.zyro.y_l);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-	USART_SendData(USART2, dane_czujniki.zyro.z_h);
+	USART_SendData(USART2, dane_czujniki.zyro.z >> 8);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-	USART_SendData(USART2, dane_czujniki.zyro.z_l);
+	USART_SendData(USART2, dane_czujniki.zyro.z);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	/* -------------------------------- */
 
