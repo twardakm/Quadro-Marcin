@@ -11,9 +11,14 @@
 
 int main(void)
 {
+	int i;
 	inicjalizacja_zegara();
 	inicjalizacja_zasilania();
 	inicjalizacja_NVIC();
+
+	for(i=0;i<500000;i++) //oczekiwanie na inicjalizacje zyro i akcel
+		asm ("nop");
+
 
 	inicjalizacja_dane();
 
