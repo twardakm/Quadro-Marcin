@@ -27,5 +27,7 @@ void inicjalizacja_dane()
 	dane_czujniki.zyro.z = 0;
 
 	dane_czujniki.pozycja.kat_z = 0;
+	dane_czujniki.pozycja.kat_y = 0;
+	dane_czujniki.pozycja.kat_x = 0;
 
 }

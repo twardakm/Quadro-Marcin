@@ -36,6 +36,8 @@ typedef struct
 typedef struct
 {
 	uint32_t kat_z; //obrót wokó³ z, w mikrostopniach
+	uint32_t kat_y; //obrót wokó³ y
+	uint32_t kat_x; //obrót wokó³ x
 } pozycjaTypeDef;
 
 typedef struct

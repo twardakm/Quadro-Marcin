@@ -104,4 +104,17 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 		dane_czujniki.pozycja.kat_z = odejmij_kat((65536 - dane_czujniki.zyro.z) * DT *MDEG, dane_czujniki.pozycja.kat_z);
 	else
 		dane_czujniki.pozycja.kat_z = dodaj_kat(dane_czujniki.zyro.z * DT *MDEG, dane_czujniki.pozycja.kat_z);
+
+	//obliczanie kata y
+	if (dane_czujniki.zyro.y > 32768)
+		dane_czujniki.pozycja.kat_y = odejmij_kat((65536 - dane_czujniki.zyro.y) * DT *MDEG, dane_czujniki.pozycja.kat_y);
+	else
+		dane_czujniki.pozycja.kat_y = dodaj_kat(dane_czujniki.zyro.y * DT *MDEG, dane_czujniki.pozycja.kat_y);
+
+	//obliczanie kata x
+	if (dane_czujniki.zyro.x > 32768)
+		dane_czujniki.pozycja.kat_x = odejmij_kat((65536 - dane_czujniki.zyro.x) * DT *MDEG, dane_czujniki.pozycja.kat_x);
+	else
+		dane_czujniki.pozycja.kat_x = dodaj_kat(dane_czujniki.zyro.x * DT *MDEG, dane_czujniki.pozycja.kat_x);
+
 }

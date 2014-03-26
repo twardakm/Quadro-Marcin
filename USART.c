@@ -92,6 +92,34 @@ void wyslij_dane()
 	temp = temp >> 8;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+
+	temp=dane_czujniki.pozycja.kat_y;
+
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+
+	temp=dane_czujniki.pozycja.kat_x;
+
+	USART_SendData(USART2, temp);
+	while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	/* -------------------------------- */
 }
 
