@@ -49,7 +49,7 @@ void inicjalizacja_zyroskop()
 {
 
 	wyslij_I2C(ZYRO_ADR, 0x20, 0b00001111);  //wlaczony zyroskop
-	wyslij_I2C(ZYRO_ADR, 0x21, 0b00000000); //filtry
+	wyslij_I2C(ZYRO_ADR, 0x21, 0b00100000); //filtry
 	wyslij_I2C(ZYRO_ADR, 0x22, 0b00000000);// poki co pin zle poprowadzony wiec niepotrzebne, jakis dziwny
 	wyslij_I2C(ZYRO_ADR, 0x23, 0b00000000); //250 dps
 	wyslij_I2C(ZYRO_ADR, 0x24, 0b00000000); //fifo, filtr wylaczone
