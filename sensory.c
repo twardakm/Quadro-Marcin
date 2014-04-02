@@ -26,10 +26,10 @@ uint32_t odejmij_kat(uint32_t nowy, uint32_t stary)
 void inicjalizacja_akcelerometr()
 {
 	//OBOWI¥ZKOWO bez tego nie dzia³a
-	wyslij_I2C(AKCEL_ADR, 0x20, 0b10010111);//ustawienie czestotliwosci
+	wyslij_I2C(AKCEL_ADR, 0x20, 0b01110111);//ustawienie czestotliwosci
 	wyslij_I2C(AKCEL_ADR, 0x21, 0b00000000); //filtrowanie wylaczone
 	wyslij_I2C(AKCEL_ADR, 0x22, 0b00000000); //bit 4 - interrupt poprowadzony (nieaktywny)
-	wyslij_I2C(AKCEL_ADR, 0x23, 0b00111000); //wysoka rozdzielczosci +-8G
+	wyslij_I2C(AKCEL_ADR, 0x23, 0b00111000); //wysoka rozdzielczosci +-16G
 	wyslij_I2C(AKCEL_ADR, 0x24, 0b00000000); //FIFO (bylo wlaczone przez Kamila)
 }
 
@@ -48,7 +48,7 @@ void inicjalizacja_SysTick(void) //na SysTick oparty jest odczyt danych
 void inicjalizacja_zyroskop()
 {
 
-	wyslij_I2C(ZYRO_ADR, 0x20, 0b00001111);  //wlaczony zyroskop
+	wyslij_I2C(ZYRO_ADR, 0x20, 0b11111111);  //wlaczony zyroskop
 	wyslij_I2C(ZYRO_ADR, 0x21, 0b00100000); //filtry
 	wyslij_I2C(ZYRO_ADR, 0x22, 0b00000000);// poki co pin zle poprowadzony wiec niepotrzebne, jakis dziwny
 	wyslij_I2C(ZYRO_ADR, 0x23, 0b00000000); //250 dps
@@ -104,17 +104,26 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 		dane_czujniki.pozycja.kat_z = odejmij_kat((65536 - dane_czujniki.zyro.z) * DT *MDEG, dane_czujniki.pozycja.kat_z);
 	else
 		dane_czujniki.pozycja.kat_z = dodaj_kat(dane_czujniki.zyro.z * DT *MDEG, dane_czujniki.pozycja.kat_z);
+	dane_czujniki.pozycja.kat_z += ZYRO_Z_KALIBR;
 
 	//obliczanie kata y
 	if (dane_czujniki.zyro.y > 32768)
 		dane_czujniki.pozycja.kat_y = odejmij_kat((65536 - dane_czujniki.zyro.y) * DT *MDEG, dane_czujniki.pozycja.kat_y);
 	else
 		dane_czujniki.pozycja.kat_y = dodaj_kat(dane_czujniki.zyro.y * DT *MDEG, dane_czujniki.pozycja.kat_y);
+	dane_czujniki.pozycja.kat_y += ZYRO_Y_KALIBR;
 
 	//obliczanie kata x
 	if (dane_czujniki.zyro.x > 32768)
 		dane_czujniki.pozycja.kat_x = odejmij_kat((65536 - dane_czujniki.zyro.x) * DT *MDEG, dane_czujniki.pozycja.kat_x);
 	else
 		dane_czujniki.pozycja.kat_x = dodaj_kat(dane_czujniki.zyro.x * DT *MDEG, dane_czujniki.pozycja.kat_x);
+	dane_czujniki.pozycja.kat_x += ZYRO_X_KALIBR;
+
+	//obliczanie przysp z
+	/*if (dane_czujniki.akcel.z > 32768)
+		dane_czujniki.przysp.przysp_z = (65536 - dane_czujniki.akcel.z) * MACC;
+	else*/
+		dane_czujniki.przysp.przysp_z = dane_czujniki.akcel.z * MACC;
 
 }

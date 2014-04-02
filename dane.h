@@ -42,9 +42,17 @@ typedef struct
 
 typedef struct
 {
+	uint32_t przysp_z;
+	uint32_t przysp_y;
+	uint32_t przysp_x;
+} przyspTypeDef;
+
+typedef struct
+{
 	akcelTypeDef akcel;
 	zyroTypeDef zyro;
 	pozycjaTypeDef pozycja;
+	przyspTypeDef przysp;
 }daneTypeDef;
 
 void inicjalizacja_dane();
