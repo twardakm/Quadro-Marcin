@@ -12,7 +12,6 @@
 
 #define DT 10 //10 ms jako interwa³ pomiêdzy odbiorem kolejnych danych
 #define MDEG 8.75 //milistopni na 1 cyfrê z ¿yroskopu
-#define MACC 1 //mg na 1 cyfrê akcelerometru
 
 uint32_t dodaj_kat(uint32_t nowy, uint32_t stary);
 uint32_t odejmij_kat(uint32_t nowy, uint32_t stary);

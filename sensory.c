@@ -29,7 +29,7 @@ void inicjalizacja_akcelerometr()
 	wyslij_I2C(AKCEL_ADR, 0x20, 0b01110111);//ustawienie czestotliwosci
 	wyslij_I2C(AKCEL_ADR, 0x21, 0b00000000); //filtrowanie wylaczone
 	wyslij_I2C(AKCEL_ADR, 0x22, 0b00000000); //bit 4 - interrupt poprowadzony (nieaktywny)
-	wyslij_I2C(AKCEL_ADR, 0x23, 0b00111000); //wysoka rozdzielczosci +-16G
+	wyslij_I2C(AKCEL_ADR, 0x23, 0b00000000); //wysoka rozdzielczosci +-16G
 	wyslij_I2C(AKCEL_ADR, 0x24, 0b00000000); //FIFO (bylo wlaczone przez Kamila)
 }
 
@@ -120,10 +120,5 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 		dane_czujniki.pozycja.kat_x = dodaj_kat(dane_czujniki.zyro.x * DT *MDEG, dane_czujniki.pozycja.kat_x);
 	dane_czujniki.pozycja.kat_x += ZYRO_X_KALIBR;
 
-	//obliczanie przysp z
-	/*if (dane_czujniki.akcel.z > 32768)
-		dane_czujniki.przysp.przysp_z = (65536 - dane_czujniki.akcel.z) * MACC;
-	else*/
-		dane_czujniki.przysp.przysp_z = dane_czujniki.akcel.z * MACC;
-
+	//przyspieszenia nie trzeba obliczaæ, wysy³amy czyste dane
 }

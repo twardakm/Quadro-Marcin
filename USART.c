@@ -123,19 +123,27 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
 	//AKCELEROMETR
-	temp=dane_czujniki.przysp.przysp_z;
+	temp=dane_czujniki.akcel.z;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+	temp = temp >> 8;
+	USART_SendData(USART2, temp);
+		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
+	temp=dane_czujniki.akcel.y;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
-	temp = temp >> 8;
+
+	temp=dane_czujniki.akcel.x;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+
 	/* -------------------------------- */
 }
 
