@@ -157,6 +157,9 @@ void USART2_IRQHandler(void)
 		if (dane == DANE_START)
 			wyslij_dane();
 		else
-			USART_SendData(USART2, 1);
+		{
+			USART_SendData(USART2, dane);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+		}
 	}
 }
