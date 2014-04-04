@@ -12,8 +12,7 @@ void inicjalizacja_silniki()
 	free(regulator);
 
 	TIM4->PSC = PRESKALER_TIM4; //preskaler 16 72 MHz / 16 = 4,5 MHz
-	TIM4->ARR = ARR_TIM4; //4000 - do tej liczby zlicza
-	//4,5 MHz / 4000 = 1125 - maksymalna wartosc (100 % duty cycle)
+	TIM4->ARR = ARR_TIM4; //do tej liczby zlicza
 
 	/*te ustawienia odpowiadaj¹ za porównanie, tzn dopóki
 	 * licznik nie bêdzie mniejszy równy  CCR1
@@ -28,7 +27,7 @@ void inicjalizacja_silniki()
 	TIM4->CR1 = TIM_CR1_CEN;
 
 	//ustawianie silników na 0
-	ustaw_silnik(1, 0);
+	ustaw_silnik(1, 2000);
 	ustaw_silnik(2, 0);
 	ustaw_silnik(3, 0);
 	ustaw_silnik(4, 0);
@@ -42,10 +41,10 @@ void ustaw_silnik(int i, uint16_t wartosc)
 	switch (i)
 	{
 	case 1:
-		TIM4->CCR1 = wartosc;
+		SILNIK1 = wartosc;
 		return;
 	case 2:
-		TIM4->CCR2 = wartosc;
+		SILNIK2 = wartosc;
 		return;
 	case 3:
 		TIM4->CCR3 = wartosc;
