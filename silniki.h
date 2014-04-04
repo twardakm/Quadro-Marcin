@@ -4,7 +4,7 @@
 #define _SILNIKI_H_
 
 #define PRESKALER_TIM4 719 //czestotliwoc = Clock/(Preskaler + 1) = 72 MHZ / 720 = 100 kHz
-#define ARR_TIM4 4000 //do tej liczby zlicza
+#define ARR_TIM4 255 //do tej liczby zlicza
 
 #define SILNIK4 TIM4->CCR4
 #define SILNIK3 TIM4->CCR3

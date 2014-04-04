@@ -4,6 +4,7 @@
 #include "dane.h"
 #include "I2C.h"
 #include "sensory.h"
+#include "silniki.h"
 /*extern potrzebne aby poinformowaæ kompilator ¿e zmienna zosta³a zadeklarowana
  * w innym pliku. Bez tego nie dzia³a
  */
@@ -149,13 +150,20 @@ void wyslij_dane()
 
 void USART2_IRQHandler(void)
 {
-	uint16_t dane=0;
+	uint8_t dane=0;
 
 	if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) //sprawdzenie czy aby na pewno odpowiednie przerwanie
 	{
 		dane = USART_ReceiveData(USART2);
 		if (dane == DANE_START)
 			wyslij_dane();
+		else if (dane == SILNIK4_REG)
+		{
+			dane = USART_ReceiveData(USART2);
+			ustaw_silnik(4, dane);
+			USART_SendData(USART2, dane);
+			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
+		}
 		else
 		{
 			USART_SendData(USART2, dane);

@@ -27,7 +27,7 @@ void inicjalizacja_silniki()
 	TIM4->CR1 = TIM_CR1_CEN;
 
 	//ustawianie silników na 0
-	ustaw_silnik(1, 2000);
+	ustaw_silnik(1, 0);
 	ustaw_silnik(2, 0);
 	ustaw_silnik(3, 0);
 	ustaw_silnik(4, 0);
@@ -35,9 +35,6 @@ void inicjalizacja_silniki()
 
 void ustaw_silnik(int i, uint16_t wartosc)
 {
-	/*if(wartosc > SILNIK_MAX)
-		return;*/
-
 	switch (i)
 	{
 	case 1:
@@ -47,10 +44,10 @@ void ustaw_silnik(int i, uint16_t wartosc)
 		SILNIK2 = wartosc;
 		return;
 	case 3:
-		TIM4->CCR3 = wartosc;
+		SILNIK3 = wartosc;
 		return;
 	case 4:
-		TIM4->CCR4 = wartosc;
+		SILNIK4 = wartosc;
 		return;
 	}
 }

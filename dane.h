@@ -4,6 +4,10 @@
 #define _DANE_H_
 
 #define DANE_START 'd'
+#define SILNIK1_REG 'A'
+#define SILNIK2_REG 'B'
+#define SILNIK3_REG 'C'
+#define SILNIK4_REG 'D'
 
 typedef struct
 {
