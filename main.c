@@ -8,6 +8,7 @@
 #include "dane.h"
 #include "I2C.h"
 #include "sensory.h"
+#include "silniki.h"
 
 int main(void)
 {
@@ -28,6 +29,16 @@ int main(void)
 	inicjalizacja_USART();
 
 	inicjalizacja_sensory();
+
+	inicjalizacja_silniki();
+	for(i=0;i<500000;i++) //ustabilizowanie na 0
+			asm ("nop");
+
+	ustaw_silnik(1, 2815);
+	ustaw_silnik(2, 2815);
+	ustaw_silnik(3, SILNIK_MAX);
+	ustaw_silnik(4, SILNIK_MAX);
+
 
     while(1)
     {
