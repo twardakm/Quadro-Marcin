@@ -159,9 +159,10 @@ void USART2_IRQHandler(void)
 			wyslij_dane();
 		else if (dane == SILNIK4_REG)
 		{
+			while(USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET);
 			dane = USART_ReceiveData(USART2);
 			ustaw_silnik(4, dane);
-			USART_SendData(USART2, dane);
+			USART_SendData(USART2, 'y');
 			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 		}
 		else

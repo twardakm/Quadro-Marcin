@@ -34,8 +34,6 @@ int main(void)
 	for(i=0;i<500000;i++) //ustabilizowanie na 0
 			asm ("nop");
 
-	ustaw_silnik(4, 250);
-
     while(1)
     {
     }

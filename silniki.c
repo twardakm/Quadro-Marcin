@@ -35,6 +35,8 @@ void inicjalizacja_silniki()
 
 void ustaw_silnik(int i, uint16_t wartosc)
 {
+	if (wartosc > 255)
+		return;
 	switch (i)
 	{
 	case 1:
