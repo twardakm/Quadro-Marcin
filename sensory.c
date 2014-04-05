@@ -145,5 +145,5 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 		dane_czujniki.akcel.ktora_srednia++;
 	}
 
-//	regulacja_PID();
+	regulacja_PID();
 }
