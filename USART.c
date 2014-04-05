@@ -124,7 +124,7 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
 	//AKCELEROMETR
-	temp=dane_czujniki.akcel.z;
+	temp=dane_czujniki.akcel.z_srednia;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;
@@ -138,7 +138,7 @@ void wyslij_dane()
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
-	temp=dane_czujniki.akcel.x;
+	temp=dane_czujniki.akcel.x_srednia;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;
@@ -195,5 +195,6 @@ void USART2_IRQHandler(void)
 			while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 		}
 		dane_czujniki.czy_polaczony = 1;
+		dane_czujniki.ktory_PID = 0;
 	}
 }

@@ -15,6 +15,12 @@ void inicjalizacja_dane()
 	dane_czujniki.akcel.y = 0;
 	dane_czujniki.akcel.z = 0;
 
+	dane_czujniki.akcel.ktora_srednia = 0;
+	dane_czujniki.akcel.x_srednia = 0;
+	dane_czujniki.akcel.x_srednia_temp = 0;
+	dane_czujniki.akcel.z_srednia = 0;
+	dane_czujniki.akcel.z_srednia_temp = 0;
+
 	dane_czujniki.zyro.x_h = 0;
 	dane_czujniki.zyro.x_l = 0;
 	dane_czujniki.zyro.y_h = 0;
@@ -31,5 +37,5 @@ void inicjalizacja_dane()
 	dane_czujniki.pozycja.kat_x = 0;
 
 	dane_czujniki.czy_polaczony = 0;
-
+	dane_czujniki.ktory_PID = 0;
 }

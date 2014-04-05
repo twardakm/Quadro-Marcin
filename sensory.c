@@ -3,11 +3,14 @@
 #include "I2C.h"
 #include "dane.h"
 #include "LED.h"
+#include "PID.h"
 
 extern volatile daneTypeDef dane_czujniki;
 
 uint32_t dodaj_kat(uint32_t nowy, uint32_t stary)
 {
+	if (stary == 0)
+		return nowy;
 	stary += nowy;
 	if (stary >= 360000000)
 		stary -= 360000000;
@@ -16,10 +19,14 @@ uint32_t dodaj_kat(uint32_t nowy, uint32_t stary)
 
 uint32_t odejmij_kat(uint32_t nowy, uint32_t stary)
 {
-	if (nowy > stary)
-		stary += 360000000 - nowy;
+	if (stary == 0)
+		return 360000000 - nowy;
+	if (nowy >= stary)
+		stary += (360000000 - nowy);
 	else
 		stary -= nowy;
+	if (stary >= 360000000)
+		stary -= 360000000;
 	return stary;
 }
 
@@ -101,24 +108,42 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 
 	//obliczanie kata z
 	if (dane_czujniki.zyro.z > 32768)
-		dane_czujniki.pozycja.kat_z = odejmij_kat((65536 - dane_czujniki.zyro.z) * DT *MDEG, dane_czujniki.pozycja.kat_z);
+		dane_czujniki.pozycja.kat_z = odejmij_kat((int)((65536 - dane_czujniki.zyro.z) * DT *MDEG), dane_czujniki.pozycja.kat_z);
 	else
-		dane_czujniki.pozycja.kat_z = dodaj_kat(dane_czujniki.zyro.z * DT *MDEG, dane_czujniki.pozycja.kat_z);
-	dane_czujniki.pozycja.kat_z += ZYRO_Z_KALIBR;
+		dane_czujniki.pozycja.kat_z = dodaj_kat((int)(dane_czujniki.zyro.z * DT *MDEG), dane_czujniki.pozycja.kat_z);
+	odejmij_kat(ZYRO_Z_KALIBR, dane_czujniki.pozycja.kat_z);
 
 	//obliczanie kata y
 	if (dane_czujniki.zyro.y > 32768)
-		dane_czujniki.pozycja.kat_y = odejmij_kat((65536 - dane_czujniki.zyro.y) * DT *MDEG, dane_czujniki.pozycja.kat_y);
+		dane_czujniki.pozycja.kat_y = odejmij_kat((int)((65536 - dane_czujniki.zyro.y) * DT *MDEG), dane_czujniki.pozycja.kat_y);
 	else
-		dane_czujniki.pozycja.kat_y = dodaj_kat(dane_czujniki.zyro.y * DT *MDEG, dane_czujniki.pozycja.kat_y);
-	dane_czujniki.pozycja.kat_y += ZYRO_Y_KALIBR;
+		dane_czujniki.pozycja.kat_y = dodaj_kat((int)(dane_czujniki.zyro.y * DT *MDEG), dane_czujniki.pozycja.kat_y);
+	odejmij_kat(ZYRO_Y_KALIBR, dane_czujniki.pozycja.kat_y);
 
 	//obliczanie kata x
 	if (dane_czujniki.zyro.x > 32768)
-		dane_czujniki.pozycja.kat_x = odejmij_kat((65536 - dane_czujniki.zyro.x) * DT *MDEG, dane_czujniki.pozycja.kat_x);
+		dane_czujniki.pozycja.kat_x = odejmij_kat((int)((65536 - dane_czujniki.zyro.x) * DT *MDEG), dane_czujniki.pozycja.kat_x);
 	else
-		dane_czujniki.pozycja.kat_x = dodaj_kat(dane_czujniki.zyro.x * DT *MDEG, dane_czujniki.pozycja.kat_x);
-	dane_czujniki.pozycja.kat_x += ZYRO_X_KALIBR;
+		dane_czujniki.pozycja.kat_x = dodaj_kat((int)(dane_czujniki.zyro.x * DT *MDEG), dane_czujniki.pozycja.kat_x);
+	dodaj_kat(ZYRO_X_KALIBR, dane_czujniki.pozycja.kat_x);
 
-	//przyspieszenia nie trzeba obliczaæ, wysy³amy czyste dane
+	//przyspieszenia nie trzeba obliczaæ, wysy³amy czyste dane (jedynie srednia)
+	if(dane_czujniki.akcel.ktora_srednia >= 16)
+	{
+		dane_czujniki.akcel.x_srednia = (dane_czujniki.akcel.x_srednia_temp >> 4);
+		dane_czujniki.akcel.x_srednia_temp = dane_czujniki.akcel.x;
+
+		dane_czujniki.akcel.z_srednia = (dane_czujniki.akcel.z_srednia_temp >> 4);
+		dane_czujniki.akcel.z_srednia_temp = dane_czujniki.akcel.z;
+
+		dane_czujniki.akcel.ktora_srednia = 1;
+	}
+	else
+	{
+		dane_czujniki.akcel.x_srednia_temp += dane_czujniki.akcel.x;
+		dane_czujniki.akcel.z_srednia_temp += dane_czujniki.akcel.z;
+		dane_czujniki.akcel.ktora_srednia++;
+	}
+
+//	regulacja_PID();
 }

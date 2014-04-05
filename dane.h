@@ -21,6 +21,12 @@ typedef struct
 	uint16_t x;
 	uint16_t y;
 	uint16_t z;
+
+	uint8_t ktora_srednia;
+	uint16_t x_srednia;
+	uint32_t x_srednia_temp;
+	uint16_t z_srednia;
+	uint32_t z_srednia_temp;
 } akcelTypeDef;
 
 typedef struct
@@ -50,7 +56,10 @@ typedef struct
 	zyroTypeDef zyro;
 	pozycjaTypeDef pozycja;
 
-	uint8_t czy_polaczony; /*
+	uint8_t czy_polaczony;
+	uint8_t ktory_PID;
+
+	/*
 	program sprawdza, jesli 0 to znaczy ze rozlaczony (silniki wylaczyc),
 	jesli 1 mozna pracowac dalej
 	sprawdzenie w przerwaniu LED TIM2_IRQHandler
