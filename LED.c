@@ -1,4 +1,8 @@
 #include "LED.h"
+#include "dane.h"
+#include "silniki.h"
+
+extern volatile daneTypeDef dane_czujniki;
 
 void inicjalizacja_LED(void)
 {
@@ -18,8 +22,8 @@ void inicjalizacja_TIM2(void)
 	//struktura timera
 	TIM_TimeBaseInitTypeDef *timer = malloc(sizeof(TIM_TimeBaseInitTypeDef));
 	timer->TIM_CounterMode = TIM_CounterMode_Up; //zliczanie do góry
-	timer->TIM_Prescaler = 1083; //preskaler z 72 MHz
-	timer->TIM_Period = 65535; //do tej liczby zlicza
+	timer->TIM_Prescaler = 270; //preskaler z 72 MHz
+	timer->TIM_Period = 16383; //do tej liczby zlicza
 	timer->TIM_ClockDivision = 0;
 
 	TIM_TimeBaseInit(TIM2, timer);
@@ -35,5 +39,11 @@ void TIM2_IRQHandler(void)
 	{
 		LED_READY_GPIO->ODR ^= (LED_READY_PIN);
 		TIM_ClearFlag(TIM2, TIM_FLAG_Update); //wyzerowanie flagi przerwania
+
+		//sprawdzenie czy wy³¹czyæ silniki
+		if (dane_czujniki.czy_polaczony == 0)
+			awaryjny_stop();
+		else
+			dane_czujniki.czy_polaczony = 0;
 	}
 }

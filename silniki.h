@@ -13,5 +13,6 @@
 
 void inicjalizacja_silniki();
 void ustaw_silnik(int i, uint16_t wartosc);
+void awaryjny_stop();
 
 #endif

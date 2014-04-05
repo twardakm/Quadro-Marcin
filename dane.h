@@ -49,6 +49,12 @@ typedef struct
 	akcelTypeDef akcel;
 	zyroTypeDef zyro;
 	pozycjaTypeDef pozycja;
+
+	uint8_t czy_polaczony; /*
+	program sprawdza, jesli 0 to znaczy ze rozlaczony (silniki wylaczyc),
+	jesli 1 mozna pracowac dalej
+	sprawdzenie w przerwaniu LED TIM2_IRQHandler
+	*/
 }daneTypeDef;
 
 void inicjalizacja_dane();

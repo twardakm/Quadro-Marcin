@@ -54,4 +54,11 @@ void ustaw_silnik(int i, uint16_t wartosc)
 	}
 }
 
+void awaryjny_stop()
+{
+	ustaw_silnik(1, 0);
+	ustaw_silnik(2, 0);
+	ustaw_silnik(3, 0);
+	ustaw_silnik(4, 0);
+}
 
