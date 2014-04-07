@@ -44,6 +44,9 @@ void TIM2_IRQHandler(void)
 		if (dane_czujniki.czy_polaczony == 0)
 			awaryjny_stop();
 		else
+		{
 			dane_czujniki.czy_polaczony = 0;
+			dane_czujniki.ktory_PID = 0;
+		}
 	}
 }

@@ -21,6 +21,7 @@
 <part id="8"/>
 <part id="9"/>
 <part id="10"/>
+<part id="11"/>
 </presentation>
 </folder>
 </info>
@@ -35,7 +36,7 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="USART.c" partName="USART.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/USART.c" title="USART.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/USART.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/USART.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4517" selectionTopPixel="1334"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3730" selectionTopPixel="2834"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="dane.c" partName="dane.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/dane.c" title="dane.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/dane.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/dane.c"/>
@@ -57,7 +58,7 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/sensory.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4874" selectionTopPixel="1967"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="PID.c" partName="PID.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/PID.c" title="PID.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/PID.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="PID.c" partName="PID.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/PID.c" title="PID.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/PID.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/PID.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="475" selectionTopPixel="29"/>
 </editor>
@@ -68,6 +69,10 @@
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="sensory.h" partName="sensory.h" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/sensory.h" title="sensory.h" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/sensory.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/sensory.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="234" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" partName="LED.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" title="LED.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/LED.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1366" selectionTopPixel="318"/>
 </editor>
 </editors>
 <views>
@@ -84,7 +89,7 @@
 <element path="/quadro/stm_lib/src"/>
 </expanded>
 <selection>
-<element path="/quadro/sensory.h"/>
+<element path="/quadro/LED.c"/>
 </selection>
 </viewState>
 </view>
@@ -215,16 +220,9 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/sensory.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/LED.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/inicjalizacja.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/USART.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/LED.c"/>
 </editors>
-<item historyLabel="PID.c" index="4">
-<position info="not_deleted" x="214" y="0"/>
-</item>
-<item historyLabel="USART.c" index="1">
-<position info="not_deleted" x="4516" y="0"/>
-</item>
-<item historyLabel="PID.c" index="4">
-<position info="not_deleted" x="259" y="0"/>
-</item>
 <item historyLabel="sensory.c" index="3">
 <position info="not_deleted" x="4826" y="0"/>
 </item>
@@ -363,8 +361,17 @@
 <item historyLabel="sensory.h" index="8">
 <position info="not_deleted" x="234" y="0"/>
 </item>
-<item active="true" historyLabel="PID.c" index="4">
+<item historyLabel="PID.c" index="4">
 <position info="not_deleted" x="475" y="0"/>
+</item>
+<item historyLabel="USART.c" index="11">
+<position info="not_deleted" x="3730" y="0"/>
+</item>
+<item historyLabel="PID.c" index="4">
+<position info="not_deleted" x="475" y="0"/>
+</item>
+<item active="true" historyLabel="LED.c" index="12">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -373,6 +380,9 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" tooltip="quadro/LED.c">
+<persistable path="/quadro/LED.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sensory.h" tooltip="quadro/sensory.h">
 <persistable path="/quadro/sensory.h"/>
 </file>
@@ -396,9 +406,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.h" tooltip="quadro/LED.h">
 <persistable path="/quadro/LED.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" tooltip="quadro/LED.c">
-<persistable path="/quadro/LED.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motors.c" tooltip="Quadro/motors.c">
 <persistable path="/Quadro/motors.c"/>
