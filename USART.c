@@ -124,7 +124,7 @@ void wyslij_dane()
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
 	//AKCELEROMETR
-	temp=dane_czujniki.akcel.z_srednia;
+	temp=dane_czujniki.akcel.z;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;
@@ -138,7 +138,7 @@ void wyslij_dane()
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 
-	temp=dane_czujniki.akcel.x_srednia;
+	temp=dane_czujniki.akcel.x;
 	USART_SendData(USART2, temp);
 		while(USART_GetFlagStatus(USART2,USART_FLAG_TXE)==RESET){}
 	temp = temp >> 8;

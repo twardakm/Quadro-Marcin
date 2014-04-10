@@ -17,9 +17,7 @@ void inicjalizacja_dane()
 
 	dane_czujniki.akcel.ktora_srednia = 0;
 	dane_czujniki.akcel.x_srednia = 0;
-	dane_czujniki.akcel.x_srednia_temp = 0;
 	dane_czujniki.akcel.z_srednia = 0;
-	dane_czujniki.akcel.z_srednia_temp = 0;
 
 	dane_czujniki.zyro.x_h = 0;
 	dane_czujniki.zyro.x_l = 0;

@@ -9,6 +9,8 @@
 #define SILNIK3_REG 'C'
 #define SILNIK4_REG 'D'
 
+#define SREDNIA 32
+
 typedef struct
 {
 	uint8_t x_h;
@@ -24,9 +26,11 @@ typedef struct
 
 	uint8_t ktora_srednia;
 	uint16_t x_srednia;
-	uint32_t x_srednia_temp;
+	uint16_t x_srednia_temp[SREDNIA];
 	uint16_t z_srednia;
-	uint32_t z_srednia_temp;
+	uint16_t z_srednia_temp[SREDNIA];
+
+	uint32_t temp; //s³u¿y do sumowania srednia_temp i przesuniecia bitowego
 } akcelTypeDef;
 
 typedef struct

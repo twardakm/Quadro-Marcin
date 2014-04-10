@@ -6,7 +6,7 @@ extern volatile daneTypeDef dane_czujniki;
 
 void regulacja_PID()
 {
-	if(dane_czujniki.akcel.z_srednia > 15000 && dane_czujniki.akcel.z_srednia < 17000)
+	/*if(dane_czujniki.akcel.z_srednia > 15000 && dane_czujniki.akcel.z_srednia < 17000)
 	{
 		dane_czujniki.pozycja.kat_y = 0;
 	}
@@ -31,5 +31,5 @@ void regulacja_PID()
 	{
 		ustaw_silnik(1, 0);
 		ustaw_silnik(2, 0);
-	}
+	}*/
 }

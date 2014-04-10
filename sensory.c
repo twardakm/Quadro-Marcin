@@ -103,6 +103,7 @@ void odczyt_zyroskop(uint8_t *bufor)
 void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 {
 	uint8_t bufor[6]; //6 - tyle danych zczytujemy
+	uint8_t i; //do petli
 	odczyt_akcelerometr(bufor);
 	odczyt_zyroskop(bufor);
 
@@ -127,23 +128,37 @@ void SysTick_Handler(void) //co 10 ms przerwanie SysTick
 		dane_czujniki.pozycja.kat_x = dodaj_kat((int)(dane_czujniki.zyro.x * DT *MDEG), dane_czujniki.pozycja.kat_x);
 	dodaj_kat(ZYRO_X_KALIBR, dane_czujniki.pozycja.kat_x);
 
-	//przyspieszenia nie trzeba obliczaæ, wysy³amy czyste dane (jedynie srednia)
-	if(dane_czujniki.akcel.ktora_srednia >= 16)
+	//srednia dla przyspieszen
+	if (dane_czujniki.akcel.ktora_srednia >= SREDNIA)
+		dane_czujniki.akcel.ktora_srednia = 0;
+
+	dane_czujniki.akcel.x_srednia_temp[dane_czujniki.akcel.ktora_srednia] = dane_czujniki.akcel.x;
+	dane_czujniki.akcel.z_srednia_temp[dane_czujniki.akcel.ktora_srednia] = dane_czujniki.akcel.z;
+
+	for (i = 0, dane_czujniki.akcel.temp = 0; i < SREDNIA; i++)
 	{
-		dane_czujniki.akcel.x_srednia = (dane_czujniki.akcel.x_srednia_temp >> 4);
-		dane_czujniki.akcel.x_srednia_temp = dane_czujniki.akcel.x;
-
-		dane_czujniki.akcel.z_srednia = (dane_czujniki.akcel.z_srednia_temp >> 4);
-		dane_czujniki.akcel.z_srednia_temp = dane_czujniki.akcel.z;
-
-		dane_czujniki.akcel.ktora_srednia = 1;
+		if(dane_czujniki.akcel.x_srednia_temp[dane_czujniki.akcel.ktora_srednia] < 32768)
+			dane_czujniki.akcel.temp += dane_czujniki.akcel.x_srednia_temp[dane_czujniki.akcel.ktora_srednia];
+		else
+			dane_czujniki.akcel.temp -= dane_czujniki.akcel.x_srednia_temp[dane_czujniki.akcel.ktora_srednia];
 	}
-	else
+	dane_czujniki.akcel.x_srednia = (dane_czujniki.akcel.temp >> 5);
+
+	//Z
+	//-------------
+
+	for (i = 0, dane_czujniki.akcel.temp = 0; i < SREDNIA; i++)
 	{
-		dane_czujniki.akcel.x_srednia_temp += dane_czujniki.akcel.x;
-		dane_czujniki.akcel.z_srednia_temp += dane_czujniki.akcel.z;
-		dane_czujniki.akcel.ktora_srednia++;
+		if(dane_czujniki.akcel.z_srednia_temp[i] < 32768)
+			dane_czujniki.akcel.temp += dane_czujniki.akcel.z_srednia_temp[i];
+		else
+			dane_czujniki.akcel.temp += (65536 - dane_czujniki.akcel.z_srednia_temp[i]);
 	}
+	dane_czujniki.akcel.z_srednia = (dane_czujniki.akcel.temp >> 5);
 
-	regulacja_PID();
+	//--------------
+
+	dane_czujniki.akcel.ktora_srednia++;
+
+//	regulacja_PID();
 }
