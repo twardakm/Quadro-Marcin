@@ -36,7 +36,11 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="USART.c" partName="USART.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/USART.c" title="USART.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/USART.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/USART.c"/>
+<<<<<<< HEAD
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4655" selectionTopPixel="1997"/>
+=======
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3730" selectionTopPixel="2834"/>
+>>>>>>> 62258739b4c059c958b000627aa852b61affd042
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="dane.c" partName="dane.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/dane.c" title="dane.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/dane.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/dane.c"/>
@@ -70,9 +74,15 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/sensory.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="234" selectionTopPixel="0"/>
 </editor>
+<<<<<<< HEAD
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" partName="LED.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" title="LED.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/LED.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="694" selectionTopPixel="318"/>
+=======
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" partName="LED.c" path="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" title="LED.c" tooltip="C:/Users/Marcin/Documents/Quadrocopter/Quadro-Marcin/LED.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/quadro/LED.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1366" selectionTopPixel="318"/>
+>>>>>>> 62258739b4c059c958b000627aa852b61affd042
 </editor>
 </editors>
 <views>
@@ -216,6 +226,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/dane.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/dane.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/inicjalizacja.c"/>
+<<<<<<< HEAD
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/stm_lib/src/silniki.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/USART.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/USART.c"/>
@@ -223,6 +234,11 @@
 <item historyLabel="sensory.c" index="3">
 <position info="not_deleted" x="4940" y="0"/>
 </item>
+=======
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/USART.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/quadro/LED.c"/>
+</editors>
+>>>>>>> 62258739b4c059c958b000627aa852b61affd042
 <item historyLabel="sensory.c" index="3">
 <position info="not_deleted" x="5342" y="0"/>
 </item>
@@ -367,8 +383,22 @@
 <item historyLabel="sensory.c" index="3">
 <position info="not_deleted" x="5007" y="0"/>
 </item>
+<<<<<<< HEAD
 <item active="true" historyLabel="USART.c" index="9">
 <position info="not_deleted" x="4532" y="0"/>
+=======
+<item historyLabel="PID.c" index="4">
+<position info="not_deleted" x="475" y="0"/>
+</item>
+<item historyLabel="USART.c" index="11">
+<position info="not_deleted" x="3730" y="0"/>
+</item>
+<item historyLabel="PID.c" index="4">
+<position info="not_deleted" x="475" y="0"/>
+>>>>>>> 62258739b4c059c958b000627aa852b61affd042
+</item>
+<item active="true" historyLabel="LED.c" index="12">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
